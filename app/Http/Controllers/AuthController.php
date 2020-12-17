@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -25,8 +27,12 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid credentials'], 400);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could not create token'], 500);
         }
 
         return $this->respondWithToken($token);
@@ -39,11 +45,11 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        dd(1);
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
+
 
     /**
      * Get the token array structure.

@@ -24,11 +24,15 @@ Route::group([
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
 
+
 });
 
-Route::resources([
-    'videos' => VideoController::class,
-]);
+Route::group(['middleware' => ['jwt.auth']], function() {
+        Route::resources([
+            'videos' => VideoController::class,
+        ]);
+});
+
 
 //Route::prefix('videos')->group(function (){
 //    Route::post('/store', [VideoController::class, 'store'])->name('api.video.store');
