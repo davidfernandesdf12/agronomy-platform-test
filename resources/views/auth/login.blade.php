@@ -17,7 +17,6 @@
             }
         </style>
     </head>
-
     <body>
         <div class="container">
         <div class="row">
@@ -29,25 +28,29 @@
                             <div class="section"><i class="mdi-alert-error red-text"></i></div>
 
                             <div><a><img class="circle" style="width: 100px;margin: 10px;" src="{{asset('/img/user.png')}}"></a></div>
-                            <div class='row'>
-                                <div class='input-field col s12'>
-                                    <input class='validate' type="text" name='username' id='email' required />
-                                    <label for='email'>Username</label>
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class='input-field col m12'>
-                                    <input class='validate' type='password' name='password' id='password' required />
-                                    <label for='password'>Password</label>
-                                </div>
-                            </div>
-                            <br/>
-                            <div style="display: flex; justify-content: center">
+                            <form action="{{ route('auth') }}" method="POST">
+                                @csrf
+
                                 <div class='row'>
-                                    <button class="btn-large waves-effect waves-light" type="submit" name="action">Entrar
-                                    </button>
+                                    <div class='input-field col s12'>
+                                        <input class='validate' type="email" name='email' id='email' required />
+                                        <label for='email'>Email</label>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class='row'>
+                                    <div class='input-field col m12'>
+                                        <input class='validate' type='password' name='password' id='password' required />
+                                        <label for='password'>Password</label>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div style="display: flex; justify-content: center">
+                                    <div class='row'>
+                                        <button class="btn-large waves-effect waves-light" type="submit" name="action">Entrar
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
 
                         </div>
                     </div>
@@ -55,7 +58,6 @@
             </main>
         </div>
     </div>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
     </body>

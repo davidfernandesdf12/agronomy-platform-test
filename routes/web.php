@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\VideoAdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+//Route::middleware(['auth'])->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('videos/', [VideoAdminController::class, 'index'])->name('admin.videos');
+    Route::post('videos/', [VideoAdminController::class, 'store'])->name('admin.videos.store');
+//});
+
+
 Route::get('/login', function (){
     return view('auth.login');
-});
-Route::get('videos/', [VideoAdminController::class, 'index'])->name('admin.videos');
+})->name('login');
+
+Route::post('/login', [LoginController::class, 'login'])->name('auth');
 
 
-//Route::name('admin.')->group(function () {
-//    Route::get('home', [HomeController::class, 'index'])->name('home');
-//});
