@@ -33,8 +33,8 @@
 
                                 <div class='row'>
                                     <div class='input-field col s12'>
-                                        <input class='validate' type="email" name='email' id='email' required />
-                                        <label for='email'>Email</label>
+                                        <input class='validate' type="text" name='email' id='username' required />
+                                        <label for='username'>Email</label>
                                     </div>
                                 </div>
                                 <div class='row'>

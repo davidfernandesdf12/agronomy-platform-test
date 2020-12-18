@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name') }}</title>
 
         <!--Import Google Icon Font-->
@@ -27,7 +27,9 @@
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script srv="https://raw.githubusercontent.com/X3TechnologyGroup/VideoFrame/master/VideoFrame.min.js"></script>
     <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
     <script>
         (function(window, document, undefined) {
 
@@ -222,6 +224,7 @@
 
             $('.sidenav').sidenav();
             $('.modal').modal();
+            $('select').formSelect();
 
             $('#datatable').dataTable({
                 "oLanguage": {

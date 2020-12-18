@@ -281,6 +281,23 @@ div.material-table table td:last-child {
     padding: 0 14px 0 0;
 }
 
+.wrap {
+    border: solid 1px #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#output {
+    display: inline-block;
+    top: 4px;
+    position: relative;
+    border: dotted 1px #ccc;
+    padding: 2px;
+}
+
+.button {
+    border: solid 2px #ccc;
+}
 
 @media only screen and (max-width : 992px) {
     .container{

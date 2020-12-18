@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ReportsAdminController;
 use App\Http\Controllers\Admin\VideoAdminController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
-    Route::get('videos/', [VideoAdminController::class, 'index'])->name('admin.videos');
-    Route::post('videos/', [VideoAdminController::class, 'store'])->name('admin.videos.store');
-//});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('videos/', [VideoAdminController::class, 'index'])->name('admin.videos');
+Route::post('videos/', [VideoAdminController::class, 'store'])->name('admin.videos.store');
+
+Route::get('reports/', [ReportsAdminController::class, 'index'])->name('admin.reports');
+Route::get('reports/create', [ReportsAdminController::class, 'create'])->name('admin.reports.create');
+Route::post('reports/post', [ReportsAdminController::class, 'post'])->name('admin.reports.post');
+Route::get('reports/pdf/{id_report}', [ReportsAdminController::class, 'getPDF'])->name('admin.reports.pdf');
 
 
 Route::get('/login', function (){

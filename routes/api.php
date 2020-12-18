@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\VideoController;
+use App\Http\Controllers\API\ReportsController;
+use App\Http\Controllers\API\VideoController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,12 +31,10 @@ Route::group(['middleware' => ['jwt.auth']], function() {
         Route::resources([
             'videos' => VideoController::class,
         ]);
+        Route::get('reports', [ReportsController::class, 'index']);
+
 });
 
-
-//Route::prefix('videos')->group(function (){
-//    Route::post('/store', [VideoController::class, 'store'])->name('api.video.store');
-//});
 
 
 
