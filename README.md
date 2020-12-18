@@ -2,61 +2,52 @@
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Agronomy Platform Test (Laravel 8) 
+Pacotes que foram adicionados para facilitar o desenvolvimento:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* laravel-framework: [Git](https://github.com/laravel/framework) | [Docs](https://laravel.com/docs/6.x)
+* spatie/laravel-medialibrary: [Git](https://github.com/spatie/laravel-sluggable) [Docs](https://github.com/spatie/laravel-medialibrary)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Credenciais Auth API 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Admin:** admin@admin.com  
+**Password:** secret
 
-## Learning Laravel
+Faça o download da collection e do arquivo de ponto inicial para facilitar o entendimento da api 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Collection insomnia: [Link](https://drive.google.com/drive/folders/14YFNEvuHhhYfOVhtzzzn0t2NzM8bJMue?usp=sharing)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Desenvolvimento
+O ambiente de desenvolvimento é provisionado numa VM (Virtual Machine), utilizando Vagrant + VirtualBox.
 
-## Laravel Sponsors
+#### 1) Pré Requisitos 
+Para rodar em ambiente local será necessario a instalação dos seguintes softwares:
+    1. Vagrant - http://www.vagrantup.com/
+    2. Virtual Box - https://www.virtualbox.org/
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Caso queria maior facilicade de instalação da VM, faça a instalação com [Laravel Homestead](https://laravel.com/docs/8.x/homestead) 
 
-### Premium Partners
+#### 2) Configuração 
+1. Você deve gerar um arquivo .env com os parâmetros exemplificado no arquivo .env.exemple, preencha os parâmetros de acordo com suas configurções de ambiente, para maior facilidade rode: cp .env.example .env  
+2. Com a VM ja instalada e configurada, você deve logar no vagrant com o comando vagrant ssh, acesse ate a raiz do seu projeto e rode os seguintes comandos:
+*     Atualizar composer: composer self-update
+*     Instalação de pacotes PHP: composer install
+*     Instalação de pacotes javascript: npm install && npm run dev
+*     Gerando chave laravel: php artisan key:generate
+*     Migrações integradas para criar as tabelas do banco de dados: php artisan migrate
+*     Populando o banco de dados: php artisan db:seed
+*     Vinculação de pastas publicas: php artisan storage:link
+*     token JWT: php artisan jwt:secret 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+                                     
+                                 
+                             
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

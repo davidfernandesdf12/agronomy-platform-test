@@ -48,21 +48,6 @@ function shoot() {
 
         var ctx = this.getContext('2d');
 
-        // this.toDataURL("image/png");
-        // this.toBlob(function (blob) {
-        //
-        //     var data = new FormData();
-        //     data.append('imagem', blob);
-        //     console.log(data);
-        //     // (this).toBlob(function(blob) {
-        //     //     alert(blob.type);
-        //     // }, 'image/wbmp');
-        //
-        //     // ajaxUpload({url: '/upload.php', data: data}).success(function () {
-        //     //     console.log('upload concluído com sucesso');
-        //     // });
-        // });
-        // window.open(this.toDataURL('image/jpg'));
     };
     snapshots.unshift(canvas);
     output.innerHTML = '';
@@ -83,7 +68,6 @@ function shoot() {
         e.preventDefault();
         var baseurl = window.location.origin;
 
-        // alert($('#title').val());
         $.ajax({
             type: "POST",
             url: baseurl+"/reports/post",
@@ -95,10 +79,9 @@ function shoot() {
                 },
             dataType: "JSON",
             success: function (response) {
-                alert(ok);
-
+                alert('relatorio cadastrado com suceoss!');
+                document.location.reload(true);
             }
         });
-        // alert(1);
     })
 })();

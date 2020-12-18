@@ -25,7 +25,11 @@ class ReportsAdminController extends Controller
     }
 
     public function post(Request $request){
-        $request->comments = json_encode($request->comments);
+        if($request->comments){
+            $request->comments = json_encode($request->comments);
+        }else{
+            $request->comments = [];
+        }
 
         $storeReport = Report::create($request->only('title', 'comments'));
 
@@ -34,6 +38,8 @@ class ReportsAdminController extends Controller
                 $storeReport->addMediaFromBase64($imageBase64)->toMediaCollection('images/');
             }
         }
+
+        return response()->json('ok', 200);
     }
 
     public function getPDF(Report $idReport){
