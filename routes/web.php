@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\VideoAdminController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/login', function (){
+    return view('auth.login');
 });
+Route::get('videos/', [VideoAdminController::class, 'index'])->name('admin.videos');
+
+
+//Route::name('admin.')->group(function () {
+//    Route::get('home', [HomeController::class, 'index'])->name('home');
+//});
